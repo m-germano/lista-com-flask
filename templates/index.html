@@ -1,0 +1,37 @@
+{% extends 'base.html' %}  
+{% block conteudo%}
+
+<a class="btn btn btn-outline-primary" href="{{url_for('adicionar_produto')}}">Adicionar Itens</a>
+<br><br>
+
+<table class="table">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Item</th>
+        <th scope="col">Marca</th>
+        <th scope="col">Quantidade</th>
+        <th scope="col">Preco</th>
+        <th scope="col">Acoes</th>
+      </tr>
+    </thead>
+    <tbody>
+    {%for item in lista%}
+        <tr>
+            <th scope="row">{{item.id}}</th>
+            <td>{{item.item}}</td>
+            <td>{{item.marca}}</td>
+            <td>{{item.quantidade}}</td>
+            <td>{{item.preco}}</td>
+            <td>
+                <a href="{{item.id}}/editar" class="btn btn-secondary btn-xs">Editar</a>
+                <a href="{{item.id}}/remover" class="btn btn-danger btn-xs" onclick="return confirm('Deseja excluir esse registro?')">Remover</a>
+            </td>
+        </tr>
+    {%endfor%}
+    </tbody>
+  </table>
+
+
+
+{% endblock conteudo%}
